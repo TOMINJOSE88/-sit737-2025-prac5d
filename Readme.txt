@@ -59,7 +59,6 @@ Logs are handled by **Winston** and stored in the `logs/` directory:
 
 ### Build and Run with Docker Compose
 
-```bash
 docker-compose up --build
 
 
@@ -68,8 +67,6 @@ Push the image to Google Cloud Artifact Registry:
 
 If you've made any changes locally, follow these steps to push the image to the cloud:
 
-bash
-Copy
 docker build -t calculator-web .
 docker tag calculator-web australia-southeast2-docker.pkg.dev/sit737-25t1-jose-e4e07b7/calculator/calculator-microservice:v2
 docker push australia-southeast2-docker.pkg.dev/sit737-25t1-jose-e4e07b7/calculator/calculator-microservice:v2
@@ -77,8 +74,6 @@ Deploy the image to Google Cloud Run:
 
 ##To deploy the updated image to Google Cloud Run:
 
-bash
-Copy
 gcloud run deploy calculator-service --image=australia-southeast2-docker.pkg.dev/sit737-25t1-jose-e4e07b7/calculator/calculator-microservice:v2 --platform=managed --region=australia-southeast2 --allow-unauthenticated
 This will make your service available in the cloud.
 
@@ -105,8 +100,6 @@ Pull the Docker image from Google Cloud Artifact Registry:
 
 Pull the image that was previously pushed to Google Cloud Artifact Registry:
 
-bash
-Copy
 docker pull australia-southeast2-docker.pkg.dev/sit737-25t1-jose-e4e07b7/calculator/calculator-microservice:v2
 This will download the image with the latest changes from the cloud to your local machine.
 
@@ -114,7 +107,5 @@ Run the container:
 
 After pulling the image, run it locally with Docker, mapping port 8082 on your local machine to port 8080 inside the container:
 
-bash
-Copy
 docker run -p 8082:8080 australia-southeast2-docker.pkg.dev/sit737-25t1-jose-e4e07b7/calculator/calculator-microservice:v2
 This will make the microservice available at http://localhost:8082.
